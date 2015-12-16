@@ -1,0 +1,451 @@
+@charset "UTF-8";
+/* stylesheet for the submarine animation */
+
+@import url 'http://s.cdpn.io/28963/base.css';
+
+* { margin: 0; }
+
+/* font-sizing with rem, source http://snook.ca/archives/html_and_css/font-size-with-rem */
+html { font-size: 80%; } 
+body { font-size: 16px; font-size: 1.4rem; } /* =14px */
+
+html {
+	background: #4d9add; /* Old browsers */
+	background: -moz-linear-gradient(top, #4d9add 0%, #7aaede 37%, #5fa2dd 70%, #7eb1dd 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4d9add), color-stop(37%,#7aaede), color-stop(70%,#5fa2dd), color-stop(100%,#7eb1dd)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #4d9add 0%,#7aaede 37%,#5fa2dd 70%,#7eb1dd 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #4d9add 0%,#7aaede 37%,#5fa2dd 70%,#7eb1dd 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #4d9add 0%,#7aaede 37%,#5fa2dd 70%,#7eb1dd 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #4d9add 0%,#7aaede 37%,#5fa2dd 70%,#7eb1dd 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4d9add', endColorstr='#7eb1dd',GradientType=0 ); /* IE6-9 */
+	width: 100%;
+	height: 100%;
+	font-family: 'icomoon', serif;
+	}
+	
+body {
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: hidden;
+	}
+
+.page-wrap {
+	margin-top: -200px;
+	min-height: 100%;
+	/*sea grass height*/
+	margin-bottom: -200px;
+	}
+	
+.page-wrap:after {
+	  content: "";
+	  display: block;
+	  height: 200px;
+	}
+	
+.bubbles {
+	min-height: 800px;
+	min-width: 800px;
+	}
+	
+.bubbles [class^="icon-"] {
+	color: #fff; 
+	opacity: 0.35;
+	z-index: 1; 
+	top: 0px;
+	right: 1200px;
+	font-size: 50rem;
+	position: absolute;
+	animation: bkMove 40s infinite cubic-bezier(.49,.5,.36,.81);
+	}
+
+#submarine {
+	position: absolute;
+	top: -180px;
+	left: -20px;
+	font-size: 60rem;
+	animation: subForwards 4s ease-in-out forwards, subDownUp 5s 2s 2 ease-in-out forwards, subHover 3s 4s infinite linear;
+	}
+	
+#submarine div {
+	position:absolute;
+	top:0px;
+	left: 200px;
+	}
+	
+.o-body [class^="icon-"] { 
+	color: #fab061; 
+	z-index: 3; 
+	position: relative;
+	}
+.lt-yellow [class^="icon-"] { 
+	color: #fcc589; 
+	z-index: 5;
+	position: relative; 
+	}
+	
+.periscope [class^="icon-"] {
+	color: #bacad3; 
+	z-index: 3; 
+	position: absolute;
+  top: 25px;
+	animation: periscope 5s ease-in-out 7s 2;
+	}
+
+.propellor [class^="icon-"] { 
+	color: #bacad3; 
+	z-index: 20; 
+	position: absolute;
+	animation: propellorMove 2s linear infinite;
+	font-size: 9rem;
+	top: 390px;
+	left: 413px;
+	}
+	
+.fishies [class^="icon-"] { 
+	color: #bacad3; 
+	z-index: 20; 
+	position: absolute;
+	animation: propellorMove 2s linear infinite;
+	font-size: 0.15rem;
+	top: 444px;
+	left: 516px;
+	}
+	
+.tan [class^="icon-"] { 
+	color: #d89a54; 
+	z-index: 8; 
+	position: relative;
+	}
+	
+.dk-brown [class^="icon-"] { 
+	color: #552d00;
+	z-index: 12;
+	position: relative;
+	}
+	
+.anchor-window [class^="icon-"] { 
+	z-index: 5000;
+	position: relative;
+	color: #CED8DB;
+	}
+	
+.grass, .page-wrap:after {
+  /* must be the same height as footer */
+  height: 200px; 
+	}
+	
+.grass [class^="icon-"] {
+	position: absolute;
+	bottom: 0; 
+	right: 1200px;
+	color: #009690;
+	font-size: 40rem;
+	animation:  bkMove 40s ease-in 1s infinite;
+	}
+	
+.sea-back [class^="icon-"] {
+	position: absolute;
+	z-index: 1;
+	top: 30px; 
+	right: 900px;
+	color: #82B9DD;
+	font-size: 100rem;
+	animation:  bkMove 40s ease-in 1s infinite;
+	}
+	
+@keyframes periscope {
+  	30%  { transform: translateY(20px); } 
+	50%  { transform: translateY(50px); }
+	70%  { transform: translateY(5px); } 
+	}
+	
+@keyframes propellorMove {
+	100% { transform: rotate(360deg); }
+	}
+	
+@keyframes subHover {
+	0%  { transform: translateY(0px) translateX(0px); }
+  	50%  { transform: translateY(15px) translateX(10px); }
+	}
+	
+@keyframes subDownUp {
+  	50%  { transform: translateY(100px) translateX(15px); }
+	}
+	
+@keyframes subForwards {
+  	50%  { transform: translateY(10px) translateX(-60px); }
+	}
+	
+@keyframes bkMove {
+    0% {  }
+    100% {  
+        /* ends off to the left of the containing element */
+        right: -1200px; 
+    }
+}
+
+/*------unsupported browsers-------*/
+
+#warning, #warning.hide { display:none; }
+
+#warning { 
+  margin: 0 auto; 
+  width: 300px;
+  background-color: white;
+  padding: 10px;
+  z-index: 500;
+  top: 30px;
+  left: 200px;
+  position: absolute;
+  font-family: helvetica;
+  line-height:1.3em;
+  border-radius: 4px;
+  } 
+
+.no-keyframes #warning,
+.no-cssanimations #warning,
+.no-csstransforms #warning,
+.no-csstransitions #warning 
+{
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-size:0.8em;
+  padding: 10px;
+  background-color: rgb(15,70,131);
+  color: white;
+  box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
+}
+
+#warning a { color:#268399; font-weight:bold; text-decoration: none; }
+
+#warning #close {
+  color: red;
+  width:15px;
+  height:20px;
+  box-shadow: 1px 2px 3px #eee;
+  position:absolute; 
+  right: 4%;
+  top: 3%;
+  margin-left: 100px;
+  font-size: 1.2em;
+  padding: 0 0 4px 4px;
+} 
+
+
+/* ICOMOON STUFF */
+@font-face {
+	font-family: 'icomoon';
+	src:url('http://s.cdpn.io/28963/icomoon.eot');
+	src:url('http://s.cdpn.io/28963/icomoon.eot?#iefix') format('embedded-opentype'),
+		url('http://s.cdpn.io/28963/icomoon.woff') format('woff'),
+		url('http://s.cdpn.io/28963/icomoon_1.ttf') format('truetype'),
+		url('http://s.cdpn.io/28963/icomoon.svg#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+	font-family: 'icomoon';
+	content: attr(data-icon);
+	speak: none;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+/* Use the following CSS code if you want to have a class per icon */
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-cogs, .icon-cog, .icon-cog-2, .icon-spinner, .icon-sun, .icon-cloud, .icon-lightning, .icon-cloud-2, .icon-snowflake, .icon-sun-2, .icon-chart, .icon-android, .icon-marvin, .icon-pictures, .icon-zip, .icon-multiply, .icon-braillew, .icon-birdhouse, .icon-droplets, .icon-pacman, .icon-earth, .icon-dark-brown, .icon-periscope, .icon-propellor, .icon-propellor-2, .icon-anchor-window, .icon-light-yellow, .icon-body, .icon-tan, .icon-sea-grass, .icon-bubbles, .icon-body2, .icon-lt-bkgd, .icon-space-invaders, .icon-skeletor, .icon-transformers, .icon-rocket, .icon-elipse, .icon-roundedrectangle, .icon-polygon, .icon-zikula, .icon-oneup, .icon-vendetta, .icon-spaceinvaders, .icon-fort, .icon-uniF487, .icon-vinyl, .icon-matt-hakes-moustache, .icon-matt-hakes-spectacles, .icon-propellor2, .icon-fishes, .icon-sea-back, .icon-dark-brown-2, .icon-jquery, .icon-restart, .icon-periscope3, .icon-periscope2, .icon-dark-brown3 {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	-webkit-font-smoothing: antialiased;
+}
+.icon-cogs:before {
+	content: "\21";
+}
+.icon-cog:before {
+	content: "\22";
+}
+.icon-cog-2:before {
+	content: "\23";
+}
+.icon-spinner:before {
+	content: "\24";
+}
+.icon-sun:before {
+	content: "\25";
+}
+.icon-cloud:before {
+	content: "\26";
+}
+.icon-lightning:before {
+	content: "\27";
+}
+.icon-cloud-2:before {
+	content: "\28";
+}
+.icon-snowflake:before {
+	content: "\29";
+}
+.icon-sun-2:before {
+	content: "\2a";
+}
+.icon-chart:before {
+	content: "\2b";
+}
+.icon-android:before {
+	content: "\2c";
+}
+.icon-marvin:before {
+	content: "\2d";
+}
+.icon-pictures:before {
+	content: "\2e";
+}
+.icon-zip:before {
+	content: "\2f";
+}
+.icon-multiply:before {
+	content: "\30";
+}
+.icon-braillew:before {
+	content: "\31";
+}
+.icon-birdhouse:before {
+	content: "\32";
+}
+.icon-droplets:before {
+	content: "\33";
+}
+.icon-pacman:before {
+	content: "\34";
+}
+.icon-earth:before {
+	content: "\35";
+}
+.icon-dark-brown:before {
+	content: "\36";
+}
+.icon-periscope:before {
+	content: "\37";
+}
+.icon-propellor:before {
+	content: "\38";
+}
+.icon-propellor-2:before {
+	content: "\39";
+}
+.icon-anchor-window:before {
+	content: "\3a";
+}
+.icon-light-yellow:before {
+	content: "\3b";
+}
+.icon-body:before {
+	content: "\3c";
+}
+.icon-tan:before {
+	content: "\3d";
+}
+.icon-sea-grass:before {
+	content: "\3e";
+}
+.icon-bubbles:before {
+	content: "\3f";
+}
+.icon-body2:before {
+	content: "\40";
+}
+.icon-lt-bkgd:before {
+	content: "\41";
+}
+.icon-space-invaders:before {
+	content: "\42";
+}
+.icon-skeletor:before {
+	content: "\43";
+}
+.icon-transformers:before {
+	content: "\44";
+}
+.icon-rocket:before {
+	content: "\f29c";
+}
+.icon-elipse:before {
+	content: "\f1bc";
+}
+.icon-roundedrectangle:before {
+	content: "\f1bd";
+}
+.icon-polygon:before {
+	content: "\f1be";
+}
+.icon-zikula:before {
+	content: "\f0ac";
+}
+.icon-oneup:before {
+	content: "\f3b7";
+}
+.icon-vendetta:before {
+	content: "\f3c5";
+}
+.icon-spaceinvaders:before {
+	content: "\f352";
+}
+.icon-fort:before {
+	content: "\f400";
+}
+.icon-uniF487:before {
+	content: "\f487";
+}
+.icon-vinyl:before {
+	content: "\f0cc";
+}
+.icon-matt-hakes-moustache:before {
+	content: "\e000";
+}
+.icon-matt-hakes-spectacles:before {
+	content: "\e001";
+}
+.icon-propellor2:before {
+	content: "\e002";
+}
+.icon-fishes:before {
+	content: "\e003";
+}
+.icon-sea-back:before {
+	content: "\e004";
+}
+.icon-dark-brown-2:before {
+	content: "\e005";
+}
+.icon-jquery:before {
+	content: "\f06b";
+}
+.icon-restart:before {
+	content: "\f11f";
+}
+.icon-periscope3:before {
+	content: "\e007";
+}
+.icon-periscope2:before {
+	content: "\e006";
+}
+.icon-dark-brown3:before {
+	content: "\e008";
+}
